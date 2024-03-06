@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IoMdAttach } from "react-icons/io";
+import Sidebar from '../../Components/sideBar/SBar';
+import { DataContext } from '../../Context/DataContext';
 import './ProductOptimization.css'; // Import CSS file for additional styles
 import cogwheel from "./cogwheel-2.svg";
-import Sidebar from '../../Components/sideBar/SBar'
+
 
 export default function ProductOptimization() {
+    const {lightTheme, setLightTheme} = useContext(DataContext)
+
     const [collapsed, setCollapsed] = useState(false);
     return (
         <div id='productOptimization' style={{ display: 'flex', height: '100vh', minHeight: '400px' }} >
@@ -30,7 +34,8 @@ export default function ProductOptimization() {
                             <div className="col">
                                 <div className='pt-4'>
                                     <div className="row">
-                                        <div className="col-11">
+                                        <div className="col-3"></div>
+                                        <div className="col-8">
 
                                             <select className="form-select" style={{ cursor: 'pointer' }} aria-label="Default select example">
                                                 <option selected>Select product to optimize</option>
@@ -38,7 +43,6 @@ export default function ProductOptimization() {
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
                                             </select>
-
                                         </div>
                                         <div className="col-1"></div>
                                     </div>
