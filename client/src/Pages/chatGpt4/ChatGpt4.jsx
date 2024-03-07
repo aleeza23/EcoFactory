@@ -5,10 +5,10 @@ import { ThreeDots } from "react-loader-spinner";
 import Spinner from '../../Components/loader/Spinner';
 import Sidebar from '../../Components/sideBar/SBar';
 import chatgptLogo from "./CHATGPT_LOGO_WHITE.svg";
-import './ESGGuidelineChecker.css'; // Import CSS file for additional styles
+import './ChatGpt4.css'; // Import CSS file for additional styles
 import cogwheel from "./cogwheel-2.svg";
 
-export default function ESGGuidelineChecker() {
+export default function ChatGpt4() {
     const [collapsed, setCollapsed] = useState(false);
     const [loading, setLoading] = useState(false);
     const [prompt, setPrompt] = useState('');
@@ -22,7 +22,7 @@ export default function ESGGuidelineChecker() {
             console.log("prompt -> ", prompt);
             setPromptsArr([...promptsArr, prompt]);
             const postData = {
-                query: prompt + "? give me response in JSON as following format -> productDescription: String, esgGuideline: String, productEsgReport: Object with Compliance (String), Grade (Float), and Analysis (String)."
+                query: prompt + "? Give me response in JSON & there should be 1 key named response"
             };
             setPrompt('');
 
@@ -30,11 +30,11 @@ export default function ESGGuidelineChecker() {
             // API Calling and getting response code
             try {
                 // Make a POST request using axios
-                const response = await axios.post('http://127.0.0.1:5000/api/advisor', postData);
+                const response = await axios.post('http://127.0.0.1:5000/api/eco_fac_gpt', postData);
 
                 console.log("response.data -> ", response.data);
-                setRecentAnswer(response.data);
-                setPromptsArr(prevPromptsArr => [...prevPromptsArr, response?.data]);
+                setRecentAnswer(response.data.response);
+                setPromptsArr(prevPromptsArr => [...prevPromptsArr, response?.data?.response]);
                 setLoading(false);
                 setError(null); // Reset error state
             } catch (error) {
@@ -55,36 +55,35 @@ export default function ESGGuidelineChecker() {
                     <span className={`big-icon ${collapsed ? 'rotate-left' : 'rotate-right'}`} style={{ ...iconStyles, color: "#ccc", marginLeft: collapsed ? '-3px' : '-10px' }}>{collapsed ? <>&#187;</> : <>&#171;</>}</span>
                 </div>
                 <div className="container-fluid d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-                    <div className="container-fluid" style={{ height: "96vh", display: 'flex', flexDirection: 'column' }}>
+                    <div className="container" style={{ height: "96vh", display: 'flex', flexDirection: 'column' }}>
                         <div className="row" style={{ backgroundColor: "#c1c1c1", height: "15%", borderTopLeftRadius: "25px", borderTopRightRadius: "25px" }}>
-                            <div className="col" >
+                            <div className="col">
                                 <div className="row">
-                                    <div className="col-1"></div>
-                                    <div className="col-11">
-                                        <h2 style={textStyle} className='pt-4'>ESG Guideline Checker</h2>
+                                    <div className="col-5 ms-3 mt-4">
+                                        {/* <h2  className='pt-4'>ChatGPT 4</h2> */}
+                                        <select style={{...textStyle, backgroundColor: "#c1c1c1", border: "none", fontSize: "24px"}} class="form-select" aria-label="Default select example">
+                                            <option selected><h1><b>ChatGPT 4</b></h1></option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
                                     </div>
+                                    <div className="col-7"></div>
                                 </div>
                             </div>
                             <div className="col">
                                 <div className='pt-4'>
-                                    <div className="row" >
-                                        <div className="col">
+                                    <div className="row">
+                                        <div className="col-3"></div>
+                                        <div className="col-8">
                                             <select className="form-select" style={{ cursor: 'pointer' }} aria-label="Default select example">
-                                                <option selected style={{}}>Select product to optimize</option>
+                                                <option selected>Select product to optimize</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
                                             </select>
                                         </div>
-                                        <div className="col me-5" style={{ position: 'relative' }}>
-                                            <select className="form-select" style={{ cursor: 'pointer' }} aria-label="Default select example">
-                                                <option selected>Select ESG Guideline</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                            <h3 style={{ color: "#a39e9e", position: "absolute", bottom: "-14%", left: "-5%" }}>+</h3>
-                                        </div>
+                                        <div className="col-1"></div>
                                     </div>
                                 </div>
                             </div>
@@ -93,10 +92,9 @@ export default function ESGGuidelineChecker() {
 
                         {promptsArr.length === 0 && <div className="row" style={{ backgroundColor: "#e6e6e6", height: "70%" }}>
                             <div className="col d-flex flex-column justify-content-center align-items-center" style={{ margin: "0 auto", maxWidth: "800px" }}>
-                                <div><img src={cogwheel} style={{ width: "40px" }} alt="cogwheel" /></div>
-                                <h3 className='heading3 text-center'>&nbsp; Just select the product and relative ESG<br /> Guideline to check compliance </h3>
-                                <p className='main-text' style={{textAlignLast: "center"}}>&nbsp; &nbsp; An AI assistant, specialized and dedicated to sustainability
-                                    best practices and ESG guidelines documentation.
+                                <div><img src={cogwheel} className='rounded circle' style={{ width: '40px' }} alt="cogwheel" /></div>
+                                <h3 className='heading3'>&nbsp; How can I help you today?</h3>
+                                <p className='main-text ' style={{ textAlignLast: "center" }}>&nbsp; &nbsp;Convenient access to all ChatGPT4 potential, in one simple and easy place, which means that the PRO and ENTERPRISE paid members will be able to access chatgpt4 directly from ECOFACTOR app, without the need to signup to ChatGPT Plus account.
                                 </p>
                             </div>
                         </div>}
@@ -122,18 +120,7 @@ export default function ESGGuidelineChecker() {
                                                         :
                                                         <div className="row" style={{ position: 'relative' }}>
                                                             <img src={chatgptLogo} className='rounded-circle' style={profileStyle} alt="" />
-                                                            <div className="col-9 shadow-none p-3 mb-5 bg-body-tertiary rounded">
-                                                                <h2>Product Description:</h2>
-                                                                <p>{prom.productDescription}</p>
-                                                                <h2>ESG Guideline:</h2>
-                                                                <p>{prom.esgGuideline}</p>
-                                                                <h2>Product ESG Report:</h2>
-                                                                <p>Grade: {prom?.productEsgReport?.Grade}</p>
-                                                                <h3>Compliance:</h3>
-                                                                <p>{prom?.productEsgReport?.Compliance}</p>
-                                                                <h3>Analysis:</h3>
-                                                                <p>{prom?.productEsgReport?.Analysis}</p>
-                                                            </div>
+                                                            <div className="col-9 shadow-none p-3 mb-5 bg-body-tertiary rounded">{prom}</div>
                                                             <div className="col-3"></div>
                                                         </div>
                                                     }
@@ -215,11 +202,4 @@ const profileUserStyle = {
     width: '10%',
     bottom: '-3px',
     right: '10px',
-};
-
-
-
-const profileStyle2 = {
-    width: '50px', // Adjust according to your preference
-    height: '50px', // Adjust according to your preference
 };
