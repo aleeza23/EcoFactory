@@ -9,14 +9,14 @@
         <tr>
           <td align="center">
                 <a href="https://www.linkedin.com/in/brunoalecrim/">
-                    <img src="https://media.licdn.com/dms/image/D4D03AQFQOdGC1phyvw/profile-displayphoto-shrink_400_400/0/1688715652137?e=1715212800&v=beta&t=nhV2kXMB7IK4BwoXq3_AsWswNczEDDi_JL8MTHN10R8" width="100px;" alt="Bruno Cesar"/>
+                    <img src="https://media.licdn.com/dms/image/D4D03AQFQOdGC1phyvw/profile-displayphoto-shrink_800_800/0/1688715652137?e=1723680000&v=beta&t=LGiUdlJ5KDgWLPLWDHhnkjSZAnEt9brQE15etSa6iEU" width="100px;" alt="Bruno Cesar"/>
                     <br />
                     <sub><b>Bruno Cesar</b></sub>
                 </a> 
             </td>
           <td align="center">
                 <a href="https://www.linkedin.com/in/katrina-cekmarjova/">
-                    <img src="https://media.licdn.com/dms/image/D4D03AQHUmk5xcDMetA/profile-displayphoto-shrink_400_400/0/1693405804041?e=1715212800&v=beta&t=0zKtgkshIgiD9xmnEjBZqXuW145GwNVv8om9XWkBOrY" width="100px;" alt="Katrina Cekmarjova"/>
+                    <img src="https://media.licdn.com/dms/image/D4D03AQHUmk5xcDMetA/profile-displayphoto-shrink_800_800/0/1693405804041?e=1723680000&v=beta&t=6slPWMhTlMHPqDF0pBoWF3YxA0vPPW9IgGZqLcLgH-A" width="100px;" alt="Katrina Cekmarjova"/>
                     <br />
                     <sub><b>Katrina Cekmarjova</b></sub>
                 </a> 
